@@ -24,7 +24,7 @@ class Convertor:
         self.temp_converter_label.grid(row=0)
 
         # help button (row 1)
-        self.help_button = Button(self.converter_frame, text="help",
+        self.help_button = Button(self.converter_frame, text="Help",
                                   font=("Arial", "14"), bg="#72aeee",
                                   padx=10, pady=10, command=self.help)
         self.help_button.grid(row=1)
@@ -36,7 +36,7 @@ class Convertor:
 
 class Help:
     def __init__(self, partner):
-        background = "orange"
+        background = "#00b2ff"
 
         # disable help button
         partner.help_button.config(state=DISABLED)
@@ -64,7 +64,7 @@ class Help:
 
         # dismiss button (row 2)
         self.dismiss_btn = Button(self.help_frame, text="Dismiss",
-                                  width=10, bg="orange", font="arial 14 bold",
+                                  width=10, bg="#72aeee", font="arial 14 bold",
                                   command=partial(self.close_help, partner))
         self.dismiss_btn.grid(row=2, pady=10)
 
