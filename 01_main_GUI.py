@@ -4,31 +4,46 @@ from functools import partial  # to prevent unwanted windows
 import random
 
 
-class Convertor:
+class quiz:
     def __init__(self, parent):
 
         # Formatting variables...
         background_color = "#00b2ff"
 
         # convertor Main screen GUI...
-        self.converter_frame = Frame(width=300, height=300, bg=background_color, pady=10)
-        self.converter_frame.grid()
+        self.quiz_frame = Frame(width=300, height=300, bg=background_color, pady=10)
+        self.quiz_frame.grid()
 
 
 
         # Temperature conversion heading (row 0)
-        self.temp_converter_label = Label(self.converter_frame, text="Temperature Converter",
+        self.quiz_home_label = Label(self.quiz_frame, text="Genetics Quiz",
                                           font=("Arial", "16", "bold"),
                                           bg=background_color,
                                           padx=10, pady=10)
-        self.temp_converter_label.grid(row=0)
+        self.quiz_home_label.grid(row=0)
 
-        # help button (row 1)
-        self.help_button = Button(self.converter_frame, text="Help",
-                                  font=("Arial", "14"), bg="#72aeee",
-                                  padx=10, pady=10, command=self.help)
-        self.help_button.grid(row=1)
+        # help / start / history frame (row 3)
+        self.help_start_hist_frame = Frame(self.quiz_frame, bg=background_color)
+        self.help_start_hist_frame.grid(row=3, column=0)
 
+        # help button
+        self.help_button = Button(self.help_start_hist_frame, font="Arial 14", bg="#95B8FE",
+                                  text="Help", width=8, command=self.help)
+        self.help_button.grid(row=3, column=1)
+
+        # start start button
+        self.start_button = Button(self.help_start_hist_frame, text="Start",
+                                   font=("Arial", "16", "bold"),
+                                   bg="#0BB103", width="10")
+        self.start_button.grid(row=3, column=2)
+
+        # show history button
+        self.history_button = Button(self.help_start_hist_frame, text="History", bg="#95B8FE",
+                                     font=("Arial", "14"), width=8,)
+        self.history_button.grid(row=3, column=3)
+
+    # help GUI
     def help(self):
         print("You asked for help")
         get_help = Help(self)
@@ -73,9 +88,11 @@ class Help:
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
 
+
+
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("Temperature Convertor")
-    something = Convertor(root)
+    root.title("quiz")
+    something = quiz(root)
     root.mainloop()
